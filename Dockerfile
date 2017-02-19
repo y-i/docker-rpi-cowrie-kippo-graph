@@ -6,6 +6,7 @@ COPY script /tmp/script/
 # install package
 RUN \
  mkdir -p /opt/cowrie && mkdir -p /var/www/html && \
+ apk update && \
  apk --no-cache add \
  cmake \
  curl \
