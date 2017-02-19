@@ -4,7 +4,7 @@ FROM container4armhf/armhf-alpine
 COPY script /tmp/script/
 
 # install package
-RUN set -x && \
+RUN \
  mkdir -p /opt/cowrie && mkdir -p /var/www/html && \
  apk --no-cache add \
  cmake \
@@ -39,7 +39,7 @@ RUN set -x && \
  zlib-dev
 
 # install h2o
-RUN set -x && \
+RUN \
  cd /tmp && \
  git clone https://github.com/h2o/h2o.git && \
  cd h2o && \
@@ -48,7 +48,7 @@ RUN set -x && \
  mkdir -p /var/log/h2o/ && chmod 777 /var/log/h2o/
 
 # install kippo-graph
-RUN set -x && \
+RUN \
  git clone https://github.com/ikoniaris/kippo-graph.git && \
  mv kippo-graph /var/www/html/ && \
  chmod 777 /var/www/html/kippo-graph/generated-graphs/ && \
@@ -60,7 +60,7 @@ RUN set -x && \
  /var/www/html/kippo-graph/config.php
 
 # install cowrie
-RUN set -x && \
+RUN \
  git clone https://github.com/micheloosterhof/cowrie.git && \
  mv cowrie /opt && \
  cd /opt/cowrie && \
@@ -71,12 +71,12 @@ RUN set -x && \
  chown -R cowrie:cowrie /opt/cowrie/*
 
 # initialize sql
-RUN set -x && \
+RUN \
  mkdir -p /run/mysqld && \
  chown -R mysql:mysql /var/lib/mysql/ && chown mysql:mysql /run/mysqld/
 
 # move scripts
-RUN set -x && \
+RUN \
  mv /tmp/script/init.sh /tmp/script/h2o.conf /tmp/script/init.sql /root/ && \
  chmod u+x /root/init.sh
 
