@@ -5,6 +5,8 @@ COPY script /tmp/script/
 
 # install package
 RUN \
+ echo 1 && echo 2
+RUN \
  'mkdir -p /opt/cowrie && mkdir -p /var/www/html'
 RUN \
  apk update && \
