@@ -5,7 +5,7 @@ COPY script /tmp/script/
 
 # install package
 RUN \
- mkdir -p /opt/cowrie && mkdir -p /var/www/html
+ 'mkdir -p /opt/cowrie && mkdir -p /var/www/html'
 RUN \
  apk update && \
  apk --no-cache add \
